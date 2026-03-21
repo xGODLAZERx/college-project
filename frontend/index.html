@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Projects</title>
+</head>
+<body>
+  <h1>My Projects</h1>
+  <div id="projects"></div>
+
+  <script>
+    fetch("http://localhost:3000/projects")
+      .then(res => res.json())
+      .then(data => {
+        const div = document.getElementById("projects");
+        data.forEach(p => {
+          div.innerHTML += `
+            <h3>${p.title}</h3>
+            <p>${p.description}</p>
+            <a href="${p.github_link}">GitHub</a>
+            <hr>
+          `;
+        });
+      });
+  </script>
+</body>
+</html>

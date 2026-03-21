@@ -1,0 +1,24 @@
+<h2>Add Project</h2>
+
+<input id="title" placeholder="Title">
+<input id="desc" placeholder="Description">
+<input id="img" placeholder="Image URL">
+<input id="git" placeholder="GitHub link">
+
+<button onclick="addProject()">Add</button>
+
+<script>
+function addProject() {
+  fetch("http://localhost:3000/projects", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      title: document.getElementById("title").value,
+      description: document.getElementById("desc").value,
+      image: document.getElementById("img").value,
+      github_link: document.getElementById("git").value
+    })
+  })
+  .then(() => alert("Added!"));
+}
+</script>
