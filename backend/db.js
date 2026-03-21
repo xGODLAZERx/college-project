@@ -1,6 +1,7 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://admin:Swapnil_1983@project-manager.44lfvyj.mongodb.net/?appName=Project-Manager/portfolio")
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
