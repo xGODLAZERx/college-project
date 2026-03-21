@@ -5,22 +5,28 @@
 </head>
 <body>
   <h1>My Projects</h1>
+  <a href="login.html">Admin Login</a>
   <div id="projects"></div>
 
   <script>
-    fetch("http://localhost:3000/projects")
+    fetch("/projects")
       .then(res => res.json())
       .then(data => {
         const div = document.getElementById("projects");
+        div.innerHTML = "";
+
         data.forEach(p => {
           div.innerHTML += `
-            <h3>${p.title}</h3>
-            <p>${p.description}</p>
-            <a href="${p.github_link}">GitHub</a>
-            <hr>
+            <div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
+              <h3>${p.title}</h3>
+              <p>${p.description}</p>
+              ${p.image ? `<img src="${p.image}" width="150">` : ""}
+              ${p.github_link ? `<p><a href="${p.github_link}" target="_blank">GitHub</a></p>` : ""}
+            </div>
           `;
         });
-      });
+      })
+      .catch(err => console.log(err));
   </script>
 </body>
 </html>
