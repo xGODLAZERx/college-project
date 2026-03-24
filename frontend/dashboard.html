@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="style.css">
   <title>Dashboard</title>
 </head>
 <body>
@@ -10,97 +11,11 @@
   <input id="desc" placeholder="Description">
   <input id="img" placeholder="Image URL">
   <input id="git" placeholder="GitHub link">
-  <button onclick="saveProject()">Save</button>
+  <button id="saveBtn">Save</button>
 
   <h2>All Projects</h2>
   <div id="projectList"></div>
 
-  <script>
-    let editId = null;
-
-    function loadProjects() {
-      fetch("/projects")
-        .then(res => res.json())
-        .then(data => {
-          const list = document.getElementById("projectList");
-          list.innerHTML = "";
-
-          data.forEach(project => {
-            list.innerHTML += `
-              <div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <button onclick='editProject("${project._id}", ${JSON.stringify(project.title)}, ${JSON.stringify(project.description)}, ${JSON.stringify(project.image)}, ${JSON.stringify(project.github_link)})'>Edit</button>
-                <button onclick='deleteProject("${project._id}")'>Delete</button>
-              </div>
-            `;
-          });
-        });
-    }
-
-    function saveProject() {
-      const projectData = {
-        title: document.getElementById("title").value,
-        description: document.getElementById("desc").value,
-        image: document.getElementById("img").value,
-        github_link: document.getElementById("git").value
-      };
-
-      if (editId) {
-        fetch(`/projects/${editId}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(projectData)
-        })
-        .then(res => res.json())
-        .then(() => {
-          alert("Project updated");
-          clearForm();
-          loadProjects();
-        });
-      } else {
-        fetch("/projects", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(projectData)
-        })
-        .then(res => res.json())
-        .then(() => {
-          alert("Project added");
-          clearForm();
-          loadProjects();
-        });
-      }
-    }
-
-    function editProject(id, title, description, image, github_link) {
-      editId = id;
-      document.getElementById("title").value = title;
-      document.getElementById("desc").value = description;
-      document.getElementById("img").value = image;
-      document.getElementById("git").value = github_link;
-    }
-
-    function deleteProject(id) {
-      fetch(`/projects/${id}`, {
-        method: "DELETE"
-      })
-      .then(res => res.json())
-      .then(() => {
-        alert("Project deleted");
-        loadProjects();
-      });
-    }
-
-    function clearForm() {
-      editId = null;
-      document.getElementById("title").value = "";
-      document.getElementById("desc").value = "";
-      document.getElementById("img").value = "";
-      document.getElementById("git").value = "";
-    }
-
-    loadProjects();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

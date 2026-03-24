@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="style.css">
   <title>Login</title>
 </head>
 <body>
@@ -8,31 +9,8 @@
 
   <input id="username" placeholder="Username">
   <input id="password" type="password" placeholder="Password">
-  <button onclick="login()">Login</button>
+  <button id="loginBtn">Login</button>
 
-  <script>
-    function login() {
-      fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username: document.getElementById("username").value,
-          password: document.getElementById("password").value
-        })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          alert("Login successful");
-          window.location.href = "dashboard.html";
-        } else {
-          alert("Invalid username or password");
-        }
-      })
-      .catch(err => console.log(err));
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
