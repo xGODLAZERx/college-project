@@ -8,6 +8,14 @@ if (projectsDiv) {
     .then(res => res.json())
     .then(data => {
       projectsDiv.innerHTML = "";
+      if (data.length === 0) {
+        const h2 = document.createElement("h2");
+        h2.innerText = "No data available";
+
+          h2.classList.add("no-data");
+
+          document.body.appendChild(h2);
+}
 
       data.forEach(p => {
         projectsDiv.innerHTML += `

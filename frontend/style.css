@@ -22,6 +22,15 @@ h1, h2 {
   text-shadow: 0 0 8px rgba(125, 249, 255, 0.8);
 }
 
+.no-data{
+  text-align: center;
+  padding-top: 15%;
+  margin: top 30px;
+}
+
+
+
+
 a {
   text-decoration: none;
   color: #7df9ff;
