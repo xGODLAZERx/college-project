@@ -207,6 +207,66 @@ button:hover {
   animation: glowPulse 2s infinite alternate;
 }
 
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #00f7ff;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.github-link img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+  transition: 0.3s;
+}
+
+.github-link:hover {
+  text-shadow: 0 0 10px #00f7ff;
+}
+
+.github-link img:hover {
+  transform: scale(1.2);
+}
+
+.project-card a {
+  margin-right: 15px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 12px;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #00f7ff;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.link-btn img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  object-fit: contain;
+  filter: invert(1);
+  transform: translateY(-6px);
+}
+
+.link-btn:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 8px #ff00ff;
+}
+
 @keyframes glowPulse {
   from {
     text-shadow: 0 0 8px rgba(125, 249, 255, 0.5);

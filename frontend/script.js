@@ -22,8 +22,14 @@ if (projectsDiv) {
           <div class="project-card">
             <h3>${p.title}</h3>
             <p>${p.description}</p>
-            ${p.image ? `<img src="${p.image}" alt="${p.title}">` : ""}
-            ${p.github_link ? `<p><a href="${p.github_link}" target="_blank">GitHub</a></p>` : ""}
+            <div class="links">
+             ${p.image ? `<a href="${p.image}" target="_blank" class="link-btn">🌐 Visit Website</a>` : ""}
+             ${p.github_link ? `
+             <a href="${p.github_link}" target="_blank" class="link-btn">
+             <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png">
+             GitHub
+             </a>` : ""}
+            </div>
           </div>
         `;
       });
